@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>登录</title>
+<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="vendor/bootstrap/css/main.css">
+
+<script type="text/javascript" src="/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4 col-xs-push-4">
+
+				<form class="form-signin" role="form" action="LoginServlet"
+					method="post">
+					<h2 class="form-signin-heading">请登录</h2>
+					<input type="text" name="PhoneNum" class="form-control"
+						placeholder="用户名" required autofocus value="" /> <input
+						type="password" name="Password" class="form-control"
+						placeholder="密码" required value="">
+					<div class="checkbox">
+						<label> <input type="checkbox" value="remember-me">
+							记住我
+						</label>
+					</div>
+					<button class="btn btn-primary btn-block" type="submit">登录</button>
+					<button id="register" class="btn btn-primary btn-block"
+						type="button">注册</button>
+
+
+				</form>
+				<p style="color: red" th:text="${message}"></p>
+			</div>
+		</div>
+
+	</div>
+	<script type="text/javascript">
+		$("#register").click(function() {
+			window.location.href = "register.html";
+		});
+	</script>
+	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>

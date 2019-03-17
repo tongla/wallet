@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>账户信息</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="register">
+<meta name="author" content="wangxin">
+<link rel="icon" href="../../favicon.ico">
+
+<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css" />
+
+<link rel="stylesheet" href="/vendor/bootstrap/css/main.css">
+
+<link rel="stylesheet" href="/dist/css/bootstrapValidator.css" />
+
+<script type="text/javascript" src="/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/dist/js/bootstrapValidator.js"></script>
+</head>
+<body>
+
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">微信钱包</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="userMain">主页</a></li>
+					<li><a href="transactionRecord">交易记录</a></li>
+					<li><a href="accountSetting">账户设置</a></li>
+					<li><a href="#contact">关于</a></li>
+				</ul>
+				<div class="btn-group pull-right ">
+					<div class="btn-group">
+						<button class="btn btn-primary dropdown-toggle"
+							data-toggle="dropdown" type="button">
+
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="accountSetting">账户信息</a></li>
+							<li><a href="exit">退出</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4">
+				<h1></h1>
+			</div>
+			<div class="col-lg-4">
+				<h1></h1>
+			</div>
+			<div class="col-lg-4">
+				<h1></h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4">
+				<h1></h1>
+			</div>
+			<div class="col-lg-4">
+				<h1></h1>
+			</div>
+			<div class="col-lg-4">
+				<h1></h1>
+			</div>
+		</div>
+		<div class="row">
+			<!-- form: -->
+			<section>
+				<div class="page-header">
+					<h1></h1>
+				</div>
+				<div class="col-lg-2">
+					<img class="img-rounded" src="" alt="..."
+						style="width: 150px; height: 150px">
+				</div>
+				<div class="col-lg-7">
+					<form id="defaultForm" method="post" class="form-horizontal"
+						action="uptUserServlet">
+						<div class="form-group">
+							<label class="col-lg-2 control-label"> 手机号 </label>
+							<div class="col-lg-4">
+								<input type="text" class="form-control" name="phoneNum"
+									placeholder="用户名" readonly="readonly" th:value="${userBean.phoneNum}" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-2 control-label"> 用户名 </label>
+							<div class="col-lg-4">
+								<input type="text" class="form-control" name="userName"
+									placeholder="用户名" readonly="readonly" th:value="${userBean.userName}" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-2 control-label"> 昵称 </label>
+							<div class="col-lg-4">
+								<input type="text" class="form-control" name="nickName"
+								th:value="${userBean.nickName}"	placeholder="昵称" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-2 control-label"> 密码 </label>
+							<div class="col-lg-4">
+								<input type="password" class="form-control" name="password"
+									placeholder="密码" value="" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-2 control-label"> 重复密码 </label>
+							<div class="col-lg-4">
+								<input type="password" class="form-control"
+									name="confirmPassword" placeholder="重复密码" value="" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-2 control-label"> 支付密码 </label>
+							<div class="col-lg-4">
+								<input type="password" class="form-control" name="payCode"
+									placeholder="支付密码" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-2 control-label"> 重复支付密码 </label>
+							<div class="col-lg-4">
+								<input type="password" class="form-control"
+									name="confirmPaycode" placeholder="重复支付密码" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-2 control-label">性别</label>
+							<div class="col-lg-4">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="sex" value="1" /> 男
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="sex" value="0" /> 女
+                                    </label>
+                                </div>
+                           </div>
+						</div> 
+						
+						<div class="form-group">
+							<div class="col-lg-9 col-lg-offset-3">
+								<button type="submit" class="btn btn-lg btn-success"
+									name="update" value="update">修改</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+			<!-- :form -->
+		</div>
+		<hr>
+		<footer>
+			<p>&copy; zcf 2018</p>
+		</footer>
+	</div>
+	<script type="text/javascript">
+		$(document)
+				.ready(
+						function() {
+							// Generate a simple captcha
+							//            function randomNumber(min, max) {
+							//                return Math.floor(Math.random() * (max - min + 1) + min);
+							//            };
+							//
+							//            $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
+
+							$('#defaultForm')
+									.bootstrapValidator(
+											{
+												// live: 'disabled',
+												message : 'This value is not valid',
+												feedbackIcons : {
+													valid : 'glyphicon glyphicon-ok',
+													invalid : 'glyphicon glyphicon-remove',
+													validating : 'glyphicon glyphicon-refresh'
+												},
+												fields : {
+													phoneNum : {
+														message : 'The phoneNum is not valid',
+														validators : {
+															notEmpty : {
+																message : '手机号码不能为空'
+															},
+															stringLength : {
+																min : 11,
+																max : 11,
+																message : '请输入11位手机号码'
+															},
+															regexp : {
+																regexp : /^1[3|7|5|8]{1}[0-9]{9}$/,
+																message : '请输入正确的手机号码'
+															}
+														}
+													},
+													userName : {
+														message : 'The userName is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The userName is required and cannot be empty'
+															},
+															stringLength : {
+																min : 6,
+																max : 30,
+																message : 'The userName must be more than 6 and less than 30 characters long'
+															},
+															regexp : {
+																regexp : /^[a-zA-Z0-9_\.]+$/,
+																message : 'The userName can only consist of alphabetical, number, dot and underscore'
+															},
+														}
+													},
+													nickName : {
+														message : 'The nickName is not valid',
+														validators : {
+															notEmpty : {
+																message : 'The nickName is required and cannot be empty'
+															},
+															stringLength : {
+																min : 1,
+																max : 30,
+																message : 'The nickName must be more than 6 and less than 30 characters long'
+															},
+														}
+													},
+													password : {
+														validators : {
+															notEmpty : {
+																message : 'The password is required and cannot be empty'
+															},
+															identical : {
+																field : 'confirmPassword',
+																message : 'The password and its confirm are not the same'
+															},
+														}
+													},
+													confirmPassword : {
+														validators : {
+															notEmpty : {
+																message : 'The confirm password is required and cannot be empty'
+															},
+															identical : {
+																field : 'password',
+																message : 'The password and its confirm are not the same'
+															},
+														}
+													},
+													payCode : {
+														validators : {
+															notEmpty : {
+																message : 'The payCode is required and cannot be empty'
+															},
+															identical : {
+																field : 'confirmPaycode',
+																message : 'The payCode and its confirm are not the same'
+															},
+														}
+													},
+													confirmPaycode : {
+														validators : {
+															notEmpty : {
+																message : 'The confirm passcode is required and cannot be empty'
+															},
+															identical : {
+																field : 'payCode',
+																message : 'The payCode and its confirm are not the same'
+															},
+														}
+													},
+													gender : {
+														validators : {
+															notEmpty : {
+																message : 'The gender is required'
+															}
+														}
+													},
+												}
+											});
+						});
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>我的零钱</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="transfer">
+    <meta name="author" content="wangxin">
+    <link rel="icon" href="../../favicon.ico">
+
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css"/>
+    
+    <link rel="stylesheet" href="/vendor/bootstrap/css/main.css">
+
+    <script type="text/javascript" src="/vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">微信钱包</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="userMain">主页</a></li>
+				<li><a href="transactionRecord">交易记录</a></li>
+				<li><a href="accountSetting">账户设置</a></li>
+				<li><a href="#contact">关于</a></li>
+            </ul>
+            <div class="btn-group pull-right ">
+                <div class="btn-group">
+                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" type="button">
+                        
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="accountSetting">账户信息</a></li>
+							<li><a href="exit">退出</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<h1>   </h1>
+<h1>   </h1>
+<h1>   </h1>
+<h1>   </h1>
+<h1>   </h1>
+<h1>   </h1>
+<h1>   </h1>
+<h1>   </h1>
+<h1>   </h1>
+<h1>   </h1>
+<h1>   </h1>
+<h1>   </h1>
+<h1>   </h1>
+<h1>   </h1>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <h1>  </h1>
+        </div>
+        <div class="col-lg-4">
+            <h1>  </h1>
+        </div>
+        <div class="col-lg-4">
+            <h1>  </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <h1>  </h1>
+        </div>
+        <div class="col-lg-4">
+            <h1>  </h1>
+        </div>
+        <div class="col-lg-4">
+            <h1>  </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4 text-center">
+           <img src="images/钱.png" style="width: 200px;height: 200px">
+            <h3>我的零钱</h3>
+            <h1 th:text="${session.money}"></h1><h1>&#65509;</h1>
+            <button class="btn btn-primary btn-block btn-success" type="submit" id="chongzhi">充值</button>
+            <button class="btn btn-primary btn-block btn-warning" type="submit" id="tixian">提现</button>
+            <div class="modal fade" id="myModal0" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <h4 class="modal-title" id="myModalLabel">充值</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form" method="post" action="chargeServlet">
+                                <div class="form-group">
+                                    <label>充值金额</label>
+                                    <input type="text" name="prem" class="form-control" placeholder="请输入充值金额">
+                                    <input type="hidden" name="userName" th:value="${session.userName}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label >支付密码</label>
+                                    <input type="password" name="payCode" class="form-control"  placeholder="支付密码">
+                                </div>
+                                <div>
+                                    <button type="reset" class="btn btn-default"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>重置</button>
+                                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>确定</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <h4 class="modal-title" id="myModalLabel1">提现</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form" method="post" action="depositServlet">
+                                <div class="form-group">
+                                    <label>提现金额</label>
+                                    <input type="text" name="prem" class="form-control" placeholder="请输入提现金额">
+                                </div>
+                                <div class="form-group">
+                                    <label>支付密码</label>
+                                    <input type="password" name="payCode" class="form-control"  placeholder="支付密码">
+                                </div>
+                                <input type="hidden" name="userName" th:value="${session.userName}"/>
+                                <div>
+                                    <button type="reset" class="btn btn-default"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>重置</button>
+                                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>确定</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                //注册新增按钮的事件
+                $("#chongzhi").click(function () {
+                    $('#myModal0').modal();
+                });
+                $("#tixian").click(function () {
+                    $('#myModal1').modal();
+                });
+            </script>
+            
+        </div>
+    </div>
+
+    <hr>
+    <footer>
+        <p>&copy; zcf 2018</p>
+    </footer>
+</div> <!-- /container -->
+
+
+</body>
+</html>
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="jmp">
+    <meta name="author" content="wangxin">
+    <link rel="icon" href="../../favicon.ico">
+
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css"/><link rel="stylesheet" href="/vendor/bootstrap/css/main.css">
+
+    <script type="text/javascript" src="/vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+	 <div class="container theme-showcase" role="main">
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <h1 th:text="${errorMessage}">转账成功</h1>
+            <p><a href="userMain" class="btn btn-primary btn-lg" role="button">点击返回 &raquo;</a></p>
+        </div>
+    </div>  
+</body>
+</html>

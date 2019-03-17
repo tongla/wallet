@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>转账</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="transfer">
+<meta name="author" content="wangxin">
+<link rel="icon" href="../../favicon.ico">
+
+<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css" />
+
+<link rel="stylesheet" href="/vendor/bootstrap/css/main.css">
+
+<script type="text/javascript" src="/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">微信钱包</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="userMain">主页</a></li>
+					<li><a href="transactionRecord">交易记录</a></li>
+					<li><a href="accountSetting">账户设置</a></li>
+					<li><a href="#contact">关于</a></li>
+				</ul>
+				<div class="btn-group pull-right ">
+					<div class="btn-group">
+						<button class="btn btn-primary dropdown-toggle"
+							data-toggle="dropdown" type="button">
+
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="accountSetting">账户信息</a></li>
+							<li><a href="exit">退出</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+
+	</nav>
+
+	<h1></h1>
+	<h1></h1>
+	<h1></h1>
+	<h1></h1>
+	<h1></h1>
+	<h1></h1>
+	<h1></h1>
+	<h1></h1>
+	<h1></h1>
+	<h1></h1>
+	<h1></h1>
+	<h1></h1>
+	<h1></h1>
+	<h1></h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4">
+				<h1></h1>
+			</div>
+			<div class="col-lg-4">
+				<h1></h1>
+			</div>
+			<div class="col-lg-4">
+				<h1></h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4">
+				<h1></h1>
+			</div>
+			<div class="col-lg-4">
+				<h1></h1>
+			</div>
+			<div class="col-lg-4">
+				<h1></h1>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-4 col-lg-offset-4">
+				<div class="input-group">
+				
+					<input type="text" class="form-control input-lg" id="searchUserName" value=""/>
+					<span class="input-group-addon btn btn-primary" id="search">搜索</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<!-- form: -->
+			<section>
+				<div class="col-lg-4 col-lg-offset-2">
+					<div class="page-header">
+						<h4>最近交易</h4>
+					</div>
+					<div class="container">
+						<ul class="media list-unstyled" th:each="record,recordStat : ${recordList}">
+
+							<li class="media">
+								<div class="media-left media-bottom">
+									<a href="javascript:void(0)"> <img class="media-object"
+										src="" alt="..." style="width: 50px; height: 50px">
+									</a>
+								</div>
+								<div class="media-body">
+									<h5 th:text="${record.transName}"></h5>
+									<button type="button" class="btn btn-xs btn-success" th:id="${record.idrecord}">转账</button>
+								</div>
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+									aria-labelledby="myModalLabel">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">×</span>
+												</button>
+												<h4 class="modal-title" id="myModalLabel">转账</h4>
+											</div>
+
+											<div class="modal-body">
+												<form class="form-horizontal" role="form" method="post"
+													action="transServlet">
+													<div class="form-group">
+														<label for="revid">转账到</label> <input type="text" 
+															name="transName" class="form-control" id="revid"
+															th:value="${record.transName}"/>
+													</div>
+													<div class="form-group">
+														<label for="amount">转账金额</label> <input type="text"
+															name="prem" class="form-control" id="amount"
+															placeholder="转账金额">
+													</div>
+													<div class="form-group">
+														<label for="payCode">支付密码</label> <input type="password"
+															name="payCode" class="form-control" id="payCode"
+															placeholder="支付密码">
+													</div>
+													<input type="hidden" name="userName" th:value="${record.userName}"/>
+													<input type="hidden" name="premFlag" value="-1"/>
+													<div>
+														<button type="reset" class="btn btn-default">
+															<span class="glyphicon glyphicon-remove"
+																aria-hidden="true"></span>重置
+														</button>
+														<button type="submit" id="btn_submit"
+															class="btn btn-primary">
+															<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>确定
+														</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div> 
+								<script type="text/javascript">
+									//注册新增按钮的事件
+									$("#[[${record.idrecord}]]").click(function() {
+										$('#myModal').modal();
+									});
+								</script>
+
+							</li>
+
+						</ul>
+					</div>
+				</div>
+				<div class="modal fade" id="payMoney" tabindex="-1" role="dialog"
+									aria-labelledby="myModalLabel">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">×</span>
+												</button>
+												<h4 class="modal-title" id="myModalLabel">转账</h4>
+											</div>
+
+											<div class="modal-body">
+												<form class="form-horizontal" role="form" method="post"
+													action="transServlet">
+													<div class="form-group">
+														<label for="revid">转账到</label> <input type="text" 
+															name="transName" class="form-control" id="searchRevid"
+															value=""/>
+													</div>
+													<div class="form-group">
+														<label for="amount">转账金额</label> <input type="text"
+															name="prem" class="form-control" id="amount"
+															placeholder="转账金额">
+													</div>
+													<div class="form-group">
+														<label for="payCode">支付密码</label> <input type="password"
+															name="payCode" class="form-control" id="payCode"
+															placeholder="支付密码">
+													</div>
+													<input type="hidden" name="userName" th:value="${session.userName}"/>
+													<input type="hidden" name="premFlag" value="-1"/>
+													<div>
+														<button type="reset" class="btn btn-default">
+															<span class="glyphicon glyphicon-remove"
+																aria-hidden="true"></span>重置
+														</button>
+														<button type="submit" id="btn_submit"
+															class="btn btn-primary">
+															<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>确定
+														</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div> 
+				
+				
+				<!-- <div class="col-lg-4 col-lg-offset-1">
+					<div class="page-header">
+						<h4>交易信息</h4>
+					</div>
+					<div>
+						<ul class="list">
+							<li></li>
+						</ul>
+					</div>
+				</div> -->
+			</section>
+			
+		</div>
+		<hr>
+		<footer>
+			<p>&copy; zcf 2018</p>
+		</footer>
+	</div>
+	<!-- /container -->
+<script type="text/javascript">
+	//注册新增按钮的事件
+	$("#search").click(function() {
+		var userName=$("#searchUserName").val();
+		
+		$.ajax({
+    		type:"GET",
+    	 	url:"ajaxQueryByuserName",
+    	 	data:{"userName":userName},
+                success:function(data){
+                	if(data!="0"){
+                		$('#searchRevid').val(userName);
+                		$('#payMoney').modal();		
+                	}else{
+                		alert("用户名错误！");
+                	}
+            	
+            }
+    	 });
+		
+	});
+</script>
+</body>
+</html>

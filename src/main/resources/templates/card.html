@@ -1,0 +1,210 @@
+<!DOCTYPE html><html>
+<head>
+    <title>银行卡</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="transfer">
+    <meta name="author" content="wangxin">
+    <link rel="icon" href="../../favicon.ico">
+
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css"/>
+    
+    <link rel="stylesheet" href="/vendor/bootstrap/css/main.css">
+
+    <script type="text/javascript" src="/vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">微信钱包</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="userMain">主页</a></li>
+					<li><a href="transactionRecord">交易记录</a></li>
+					<li><a href="accountSetting">账户设置</a></li>
+					<li><a href="#contact">关于</a></li>
+                </ul>
+                <div class="btn-group pull-right ">
+                    <div class="btn-group">
+                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" type="button">
+                           
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="userinfo.jsp">账户信息</a></li>
+                            <li><a href="index.jsp">退出</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!--/.nav-collapse -->
+        </div>
+
+    </nav>
+
+   
+    <h1>   </h1>
+    <h1>   </h1>
+    <h1>   </h1>
+    <h1>   </h1>
+    <h1>   </h1>
+    <h1>   </h1>
+    <h1>   </h1>
+    <h1>   </h1>
+    <h1>   </h1>
+    <h1>   </h1>
+    <h1>   </h1>
+    <h1>   </h1>
+    <h1>   </h1>
+    <h1>   </h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h1>  </h1>
+            </div>
+            <div class="col-lg-4">
+                <h1>  </h1>
+            </div>
+            <div class="col-lg-4">
+                <h1>  </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <h1>  </h1>
+            </div>
+            <div class="col-lg-4">
+                <h1>  </h1>
+            </div>
+            <div class="col-lg-4">
+                <h1>  </h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- form: -->
+            <section>
+                <div class="page-header">
+                    <h4>         银行卡     <button type="button" class="btn btn-success" id="addcard">添加银行卡</button></h4>
+                    <div class="modal fade" id="myModal0" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">添加银行卡</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form class="form-horizontal" role="form" method="post" action="AddCardServlet">
+                                        <div class="form-group">
+                                            <label for="cardnum">银行卡号</label>
+                                            <input type="text" name="cardnum" class="form-control" id="cardnum" placeholder="请输入银行卡号">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bankname">银行名称</label>
+                                            <input type="text" name="bankname" class="form-control" id="bankname" placeholder="请输入发卡行">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="userphone">银行名称</label>
+                                            <input type="text" name="userphone" class="form-control" id="userphone" placeholder="请输入银行卡绑定的手机号" value="<%=user.getPhoneNum()%>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">银行卡类型</label>
+                                                <label>
+                                                    <input type="radio" name="cardtype" value="储蓄卡" /> 储蓄卡
+                                                </label>
+                                                <label>
+                                                    <input type="radio" name="cardtype" value="信用卡" /> 信用卡
+                                                </label>
+
+                                        </div>
+                                        <div>
+                                            <button type="reset" class="btn btn-default"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>重置</button>
+                                            <button type="submit" id="btn_submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>确定</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        //注册新增按钮的事件
+                        $("#addcard").click(function () {
+                            $('#myModal0').modal();
+                        });
+                    </script>
+                </div>
+                
+
+                    <div class="container">
+                        
+                        <div class="panel panel-primary">
+                            <div class="panel-heading"></div>
+                            <div class="panel-body">
+                                <h3></h3>
+                            </div>
+                            <div class="panel-footer">
+                                
+                                <button type="button" class="btn btn-primary btn-sm pull-right" >删除</button>
+                            </div>
+                            <div class="modal fade" id="mymodal"  tabindex="-1" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                <span aria-hidden="true">&times;</span>
+                                                <span class="sr-only">Close</span>
+                                            </button>
+                                            <h4 class="modal-title">请您确认</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>确认删除这张银行卡？</p>
+                                            <form class="form-horizontal" role="form" action="DelCardServlet" method="post">
+                                                <input name='cardid' type=hidden value="<%=cards.get(i).getCardID()%>">
+                                                <button type="button" class="btn btn-warning" data-dismiss="modal">关闭</button>
+                                                <button type="submit" class="btn btn-success" id="btnOk">确认</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <script>
+                                //注册新增按钮的事件
+                                $("#<%=cards.get(i).getCardID()+""%>").click(function () {
+                                    $('#mymodal').modal();
+                                });
+                            </script>
+                        </div>
+
+                    <div>
+
+                    </div>
+                </div>
+            </section>
+            <!-- :form -->
+        </div>
+        <hr>
+        <footer>
+            <p>&copy; zcf 2018</p>
+        </footer>
+
+    </div> <!-- /container -->
+
+
+
+</body>
+</html>

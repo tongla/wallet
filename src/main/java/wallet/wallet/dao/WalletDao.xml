@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="wallet.wallet.dao.WalletDao" >
+
+    <update id="lastLogin" parameterType="wallet.wallet.bean.UserBean">
+    	update  `walletdata`.`user` u set u.lastLogin=sysdate() where u.userName = #{userName,jdbcType=VARCHAR} and u.password=#{password,jdbcType=VARCHAR}
+    </update>
+    <select id="isExistPhone" resultType="java.lang.Integer"  parameterType="java.lang.String" >
+        select count(1) from user u where u.phoneNum = #{phoneNum} 
+    </select>
+    <insert id="insertUserInfo"  parameterType="wallet.wallet.bean.UserBean">
+		INSERT INTO `walletdata`.`user`
+		(
+		`phoneNum`,
+		`userName`,
+		`nickName`,
+		`sex`,
+		`password`,
+		`payCode`
+		)
+		VALUES
+		(
+		#{phoneNum},
+		#{userName},
+		#{nickName},
+		#{sex},
+		#{password},
+		#{payCode}
+		)
+    </insert>
+     <update id="updateUserInfo"  parameterType="wallet.wallet.bean.UserBean">
+     	UPDATE `walletdata`.`user`
+		SET
+		`nickName`=#{nickName},
+		`sex`= #{sex},
+		`password`=#{password},
+		`payCode`= #{payCode}
+		WHERE `userName` = #{userName}
+     </update>
+    <select id="queryRecordByName" resultType="wallet.wallet.bean.RecordBean"  parameterType="java.lang.String" >
+		SELECT `record`.`idrecord`,
+		    `record`.`userName`,
+		    `record`.`transName`,
+		    `record`.`premFlag`,
+		    `record`.`prem`,
+		    `record`.`createDate`
+		FROM `walletdata`.`record`
+		where `record`.`userName`=#{userName}
+    </select>
+    
+    <update id="subOwnAccount" parameterType="wallet.wallet.bean.RecordBean">
+		UPDATE `walletdata`.`user`
+		SET
+		`money` = (`money`- #{prem})
+		WHERE `userName` = #{userName}
+    </update>
+   <update id="addTransAccount" parameterType="wallet.wallet.bean.RecordBean">
+		UPDATE `walletdata`.`user`
+		SET
+		`money` = (`money`+ #{prem})
+		WHERE `userName` = #{transName}
+    </update>
+    
+    <insert id="insertRecord" parameterType="wallet.wallet.bean.RecordBean">
+		INSERT INTO `walletdata`.`record`
+		(
+		`userName`,
+		`transName`,
+		`premFlag`,
+		`prem`
+		)
+		VALUES
+		(
+		#{userName},
+		#{transName},
+		#{premFlag},
+		#{prem}
+		)    
+    </insert >
+    <select id="queryByuserName" resultType="java.lang.Integer"  parameterType="java.lang.String" >
+    	select count(1) from user u where u.userName = #{userName} 
+    </select>
+     <select id="queryUserByName" resultType="wallet.wallet.bean.UserBean"  parameterType="java.lang.String" >
+    	select * from user u where u.userName = #{userName} 
+    </select>
+     <update id="addOwnAccount" parameterType="wallet.wallet.bean.RecordBean">
+		UPDATE `walletdata`.`user`
+		SET
+		`money` = (`money`+ #{prem})
+		WHERE `userName` = #{userName}
+    </update>
+    <select id="tranferAccount" statementType="CALLABLE" parameterType="wallet.wallet.bean.RecordBean" >
+         { call transfer(
+             #{userName,mode=IN,jdbcType=VARCHAR},    
+             #{transName,mode=IN,jdbcType=VARCHAR},
+             #{prem,mode=IN,jdbcType=DOUBLE}
+             )
+         } 
+    </select>
+    <select id="queryAllRecord" resultType="wallet.wallet.bean.RecordBean"  parameterType="java.lang.String" >
+		SELECT `record`.`idrecord`,
+		    `record`.`userName`,
+		    `record`.`transName`,
+		    `record`.`premFlag`,
+		    `record`.`prem`,
+		    `record`.`createDate`
+		FROM `walletdata`.`record`
+		
+    </select>
+    
+</mapper>
